@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Chat AI in Glassmorphism Style</title>
+  <meta charset="utf-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Main Container -->
+<div class="container">
+  
+  <header>
+    <div class="logo">Glassmorphism Interface</div>
+    <div class="settings-button" id="settingsButton">⚙️</div>
+  </header>
+
+  <!-- Chat Container with Glassmorphism -->
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="Send GPT/Gemini message" disabled />
+      <button id="sendButton" disabled>Send</button>
+    </div>
+    <p style="text-align: center;">
+      <small>ChatGPT & Gemini may make mistakes. Consider verifying important information.</small>
+    </p>
+  </div>
+</div>
+
+<!-- Modal to enter/manage API key -->
+<div id="apiModal" class="modal-overlay">
+  <div class="modal">
+    <h1>
+      <img src="https://clipart-library.com/image_gallery/438661.png" width="25%" alt="Troll Meme Face">
+
+    </h1>
+    <h2 class="text-center">Engaging GPT/GEMINI Experience</h2>
+    <p class="text-center">Enter your API key to get started:</p>
+    <input type="text" id="apiKeyInput" placeholder="GPT or Gemini..." />
+    <button id="saveApiButton" class="save-api-button">Save Key</button>
+    <button id="removeApiButton" class="remove-api-button" style="display: none;">
+      Remove API Key
+    </button>
+    <p>
+      <small>
+        Obtain the Chat GPT key at:
+        <a href="https://platform.openai.com/api-keys" target="_blank">Open AI Studio</a>
+      </small><br />
+      <small>
+        Obtain the Gemini key at:
+        <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+      </small>
+    </p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>
+    &copy; 2025 <a href="https://github.com/FredSRocha/Chat-GPT-Gemini-Glassmorphism" target="_blank">Chat GPT/Gemini Template</a>
+  </p>
+</footer>
+
+<script  src="./script.js"></script>
+
+</body>
+</html>

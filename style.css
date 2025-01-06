@@ -1,0 +1,389 @@
+/* -------------------------------------------------
+          Color Palette & Variables for Glassmorphism
+        --------------------------------------------------- */
+:root {
+  /* Background for body: subtle gradient with light colors */
+  --gradient-start: #f4f6f9;
+  --gradient-end: #e9ecf2;
+
+  /* Accent and text colors */
+  --accent-color: #1d1d1f; /* Dark color inspired by Apple */
+  --text-color: #333;
+  --secondary-text-color: #555;
+  --danger-color: #d63031;
+
+  /* Colors and settings for the glassmorphism effect */
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: 15px;
+
+  /* Typography settings */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --base-font-size: 16px;
+}
+
+/* -------------------------------------------------
+          Reset & Base
+        --------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+html {
+  font-size: var(--base-font-size);
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+}
+
+/* -------------------------------------------------
+          General Container
+        --------------------------------------------------- */
+.container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* -------------------------------------------------
+          Header
+        --------------------------------------------------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  user-select: none;
+}
+
+/* -------------------------------------------------
+          Settings Button
+        --------------------------------------------------- */
+.settings-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background: var(--glass-bg);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  transition: background 0.3s ease, transform 0.2s ease;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.settings-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* -------------------------------------------------
+          Chat Container (Glassmorphism)
+        --------------------------------------------------- */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Glassmorphism effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  max-width: 75%;
+  line-height: 1.4;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: 12px 12px 0 12px;
+  padding: 12px 15px;
+}
+
+.ai-message {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-color);
+  border-radius: 12px 12px 12px 0;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* -------------------------------------------------
+          Input and Send Button
+        --------------------------------------------------- */
+.input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.input-container input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  transition: border 0.2s ease;
+}
+
+.input-container input[type="text"]:focus {
+  border-color: var(--accent-color);
+}
+
+.input-container button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--accent-color);
+  color: #fff;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.input-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.input-container button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------
+          Settings Modal (Glassmorphism)
+        --------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+.modal-overlay.show {
+  display: flex; /* Displays the modal */
+}
+
+.modal {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+}
+
+.modal p {
+  margin-bottom: 20px;
+  color: var(--secondary-text-color);
+}
+
+.modal a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.modal a[href="https://platform.openai.com/api-keys"]
+{
+  color: #1a7f64;
+}
+
+.modal a[href="https://makersuite.google.com/app/apikey"]
+{
+  color: #0b57d0;
+}
+
+.modal input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.modal button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal button:hover {
+  transform: translateY(-1px);
+}
+
+.save-api-button {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.remove-api-button {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+/* -------------------------------------------------
+          Footer
+        --------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--secondary-text-color);
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* -------------------------------------------------
+          Animations
+        --------------------------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------------------------
+        Mobile Responsiveness
+       --------------------------------------------------- */
+@media (max-width: 600px) {
+  /* Reduce overall padding */
+  .container {
+    padding: 10px;
+  }
+
+  /* Adjustments for chat container */
+  .chat-container {
+    padding: 15px;
+  }
+
+  /* Stack input and button on smaller screens */
+  .input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-container input[type="text"] {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .input-container button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Adjust message width to use full space */
+  .message {
+    max-width: 100%;
+  }
+
+  /* Adjust footer (if needed) */
+  footer {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+}
